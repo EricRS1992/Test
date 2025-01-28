@@ -1,0 +1,25 @@
+name: Test PR Merged Condition
+
+on:
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Echo for open PRs
+      - name: Echo for Open PRs
+        if: github.event.pull_request.merged == false
+        run: echo "This PR is open and not merged yet."
+
+      # Step 3: Echo for Merged PRs
+      - name: Echo for Merged PRs
+        if: github.event.pull_request.merged == true
+        run: echo "This PR has been merged."
