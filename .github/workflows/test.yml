@@ -3,11 +3,12 @@ name: Test PR Merged Condition
 on:
   pull_request:
     branches:
+      - main
       - development
-    # types:
-    #   - opened
-    #   - synchronize
-    #   - reopened
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   test:
